@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models
+namespace Models.Exceptions
 {
-    public class Player
-    {
-		public string Name { get; set; }
-		public string Weapon { get; set; }
+	public class NoSuchStrategyException
+	{
+		public NoSuchStrategyException()
+		{
+				
+		}
 	}
 }

@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\NoSuchStrategyException.cs" />
+    <Compile Include="Exceptions\WrongNumerOfPlayersException.cs" />
     <Compile Include="Interface\IValidateWinner.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\Tournament.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
