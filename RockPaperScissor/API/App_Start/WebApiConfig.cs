@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using API.Interface;
+using API.Utils;
+using Business;
+using Newtonsoft.Json.Serialization;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using Unity;
 
 namespace API
 {
@@ -22,13 +23,18 @@ namespace API
                 defaults: new { id = RouteParameter.Optional }
             );
 
-			var cors = new EnableCorsAttribute("http://localhost:4200", "*", "*");
-			config.EnableCors(cors);
+            // Dependency Injection
+            var container = new UnityContainer();
+            container.RegisterType<IValidateWinner, ValidateWinner>();
+            config.DependencyResolver = new UnityResolver(container);
 
-			var jsonFormatter = config.Formatters.JsonFormatter;
-			jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-			config.Formatters.Remove(config.Formatters.XmlFormatter);
-			jsonFormatter.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
-		}
+            var cors = new EnableCorsAttribute("http://localhost:4200", "*", "*");
+            config.EnableCors(cors);
+
+            var jsonFormatter = config.Formatters.JsonFormatter;
+            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            jsonFormatter.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
+        }
     }
 }
