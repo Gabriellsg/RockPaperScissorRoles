@@ -12,7 +12,7 @@ namespace API.Controllers
     {
         private readonly IValidateWinner _validateWinner;
 
-        public PlayGameController(ValidateWinner validateWinner)
+        public PlayGameController(IValidateWinner validateWinner)
         {
             this._validateWinner = validateWinner;
         }

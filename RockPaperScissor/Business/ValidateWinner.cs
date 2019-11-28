@@ -10,6 +10,7 @@ namespace Business
 {
 	public class ValidateWinner : IValidateWinner
 	{
+		#region methods public
 		public Response rps_game_winner(List<Player> listPlayers)
 		{
 			try
@@ -92,13 +93,12 @@ namespace Business
 					Message = ex.Message
 				};
 			}
-
-
 		}
+		#endregion
 
+		#region methods private
 		private void validateRequest(List<Player> listPlayers)
 		{
-
 			if (listPlayers.Count < 2)
 			{
 				throw new WrongNumerOfPlayersException("The number of players is not equal to 2!");
@@ -119,10 +119,8 @@ namespace Business
 			}
 		}
 
-
 		private List<Player> validateWinner(List<Player> list)
 		{
-
 			if (list[0].Weapon.Contains("R") && list[1].Weapon.Contains("R"))
 			{
 				for (int i = 0; i < list.Count; i++)
@@ -223,6 +221,7 @@ namespace Business
 				return list;
 			}
 		}
+		#endregion
 
 	}
 }
