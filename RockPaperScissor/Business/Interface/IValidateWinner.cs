@@ -1,7 +1,7 @@
 ﻿using Models.Models;
 using System.Collections.Generic;
 
-namespace API.Interface
+namespace Business.Interface
 {
 	public interface IValidateWinner
 	{

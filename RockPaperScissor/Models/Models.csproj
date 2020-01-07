@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="Exceptions\NoSuchStrategyException.cs" />
     <Compile Include="Exceptions\WrongNumerOfPlayersException.cs" />
-    <Compile Include="Interface\IValidateWinner.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\Tournament.cs" />

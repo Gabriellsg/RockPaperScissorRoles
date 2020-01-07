@@ -1,4 +1,4 @@
-﻿using API.Interface;
+﻿using Business.Interface;
 using API.Utils;
 using Business;
 using Newtonsoft.Json.Serialization;
@@ -27,10 +27,12 @@ namespace API
             var container = new UnityContainer();
             container.RegisterType<IValidateWinner, ValidateWinner>();
             config.DependencyResolver = new UnityResolver(container);
+			// End Dependency
 
             var cors = new EnableCorsAttribute("http://localhost:4200", "*", "*");
             config.EnableCors(cors);
 
+			// Acept Json Format
             var jsonFormatter = config.Formatters.JsonFormatter;
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             config.Formatters.Remove(config.Formatters.XmlFormatter);
